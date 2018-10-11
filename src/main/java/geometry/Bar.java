@@ -11,6 +11,13 @@ public class Bar implements Collider {
 
     @Override
     public boolean isColliding(Collider other) {
+        if(other instanceof Point) {
+            return other.isColliding(this);
+        }
+        if(other instanceof Bar) {
+            return  (((Bar) other).getLeftPoint().getX() < this.getRightPoint().getX() && ((Bar) other).getRightPoint().getX() > this.getLeftPoint().getX() &&
+                    ((Bar) other).getLeftPoint().getY() < this.getRightPoint().getY() && ((Bar) other).getRightPoint().getY() > this.getLeftPoint().getY());
+        }
         return false;
     }
 

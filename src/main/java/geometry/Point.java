@@ -18,8 +18,8 @@ public class Point implements Collider {
         }
         if (other instanceof Bar) {
             Bar b = (Bar) other;
-            return b.getLeftPoint().getX() <= this.x && this.x <= b.getRightPoint().getX()
-                    && this.y <= b.getRightPoint().getY() && this.y >= b.getLeftPoint().getY();
+            return b.getLeftPoint().getX() < this.x && this.x < b.getRightPoint().getX()
+                    && this.y < b.getRightPoint().getY() && this.y > b.getLeftPoint().getY();
         }
         return false;
     }
